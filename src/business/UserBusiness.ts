@@ -16,46 +16,38 @@ export class UserBusiness {
     private hashManager: HashManager
   ) { }
 
-  public signup = async (
-    input: SignupInputDTO
-  ): Promise<SignupOutputDTO> => {
-    const { name, email, password } = input
+  public signup = async (input: SignupInputDTO): Promise<SignupOutputDTO> =>{
+        
+    const {name, email, password} = input
 
-    const hashedPassword = await this.hashManager.hash(password)
-    console.log(hashedPassword);
-    
-    console.log(this)
     const id = this.idGenerator.generate()
 
-    const newUser = new User(
-      id,
-      name,
-      email,
-      hashedPassword,
-      USER_ROLES.NORMAL, // só é possível criar users com contas normais
-      new Date().toISOString()
+    const hashedPassword = await this.hashManager.hash(password)
+
+    const user = new User(
+        id,
+        name, 
+        email,
+        hashedPassword,
+        USER_ROLES.NORMAL,
+        new Date().toISOString()
     )
+    const userDB = user.toDBModel()
+    await this.userDatabase.insertUser(userDB)
 
-    const newUserDB = newUser.toDBModel()
-    await this.userDatabase.insertUser(newUserDB)
+        const payLoad: TokenPayload = {
+            id: user.getId(),
+            name: user.getName(),
+            role: user.getRole()
+        }
 
-    // modelagem do payload do token
-    const tokenPayload: TokenPayload = {
-      id: newUser.getId(),
-      name: newUser.getName(),
-      role: newUser.getRole()
+    const result: SignupOutputDTO = {
+        token: this.tokenManager.createToken(payLoad)
     }
 
-    // criação do token
-    const token = this.tokenManager.createToken(tokenPayload)
+    return result
 
-    const output: SignupOutputDTO = {
-      message: "Cadastro realizado com sucesso",
-      token: token
-    }
-
-    return output
-  }
+}
 
   public login = async (
     input: LoginInputDTO
