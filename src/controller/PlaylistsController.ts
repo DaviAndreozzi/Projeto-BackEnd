@@ -66,6 +66,7 @@ export class PlaylistController {
       })
 
       const output = await this.playlistBusiness.editPlaylist(input)
+      
       res.status(200).send(output)
     } catch (error) {
       console.log(error)
@@ -109,7 +110,7 @@ export class PlaylistController {
         PlaylistId:req.params.id,
         like:req.body.like
       })
-
+      
       const output = await this.playlistBusiness.likeOrDislikePlaylist(input)
 
       res.status(200).send(output)

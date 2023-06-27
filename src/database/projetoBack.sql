@@ -27,6 +27,7 @@ CREATE TABLE playlists(
   ON DELETE CASCADE
 );
 
+
 INSERT INTO playlists (id,creator_id,name)
 VALUES
 ('p001', 'u001', 'relaxing'),
@@ -36,19 +37,20 @@ SELECT * FROM playlists;
 
 CREATE TABLE likes_dislikes(
   user_id TEXT NOT NULL,
-  playlists_id TEXT NOT NULL,
+  playlist_id TEXT NOT NULL,
   like INTEGER NOT NULL,
   Foreign Key (user_id) REFERENCES users(id),
-  Foreign Key (playlists_id) REFERENCES playlists(id)
+  Foreign Key (playlist_id) REFERENCES playlists(id)
 );
 
-INSERT INTO likes_dislikes (user_id,playlists_id,like)
+INSERT INTO likes_dislikes (user_id,playlist_id,like)
 VALUES
 ('u001','p001',1),
 ('u003','p001',1),
 ('u001','p002',1),
 ('u003','p002',0);
 
+SELECT * FROM likes_dislikes;
 
 UPDATE playlists
 SET likes = 2

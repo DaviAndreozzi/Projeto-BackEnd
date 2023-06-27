@@ -1,0 +1,58 @@
+#  Users
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name":"jujuju3",
+    "email":"juju5@gmail.com",
+    "password":"1314356"
+}
+
+###
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email":"juju5@gmail.com",
+    "password":"1314356"
+}
+
+
+### Playlists
+POST http://localhost:3003/playlists
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3OWVhMDRlLTA1YzktNDNkOS1hODU2LWJiOGQ2OWU3YmFkZiIsIm5hbWUiOiJqdWp1anUzIiwicm9sZSI6Ik5PUk1BTCIsImlhdCI6MTY4NzQ3OTUzMiwiZXhwIjoxNjg4MDg0MzMyfQ.b1JRWR8QYtBXHGVDPNU-1ooaiDIDsnTP5T5NGniE8sM
+
+{
+  "name":"Rock_juju"
+}
+
+
+###
+GET http://localhost:3003/playlists
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3OWVhMDRlLTA1YzktNDNkOS1hODU2LWJiOGQ2OWU3YmFkZiIsIm5hbWUiOiJqdWp1anUzIiwicm9sZSI6Ik5PUk1BTCIsImlhdCI6MTY4NzQ3OTUzMiwiZXhwIjoxNjg4MDg0MzMyfQ.b1JRWR8QYtBXHGVDPNU-1ooaiDIDsnTP5T5NGniE8sM
+
+###
+PUT http://localhost:3003/playlists/abaf7743-f8ae-40a6-86bf-136f6a1ce992
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3OWVhMDRlLTA1YzktNDNkOS1hODU2LWJiOGQ2OWU3YmFkZiIsIm5hbWUiOiJqdWp1anUzIiwicm9sZSI6Ik5PUk1BTCIsImlhdCI6MTY4NzQ3OTUzMiwiZXhwIjoxNjg4MDg0MzMyfQ.b1JRWR8QYtBXHGVDPNU-1ooaiDIDsnTP5T5NGniE8sM
+
+{
+  "name":"Sanba_juju"
+}
+
+###
+PUT http://localhost:3003/playlists/abaf7743-f8ae-40a6-86bf-136f6a1ce992/like
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3OWVhMDRlLTA1YzktNDNkOS1hODU2LWJiOGQ2OWU3YmFkZiIsIm5hbWUiOiJqdWp1anUzIiwicm9sZSI6Ik5PUk1BTCIsImlhdCI6MTY4NzQ3OTUzMiwiZXhwIjoxNjg4MDg0MzMyfQ.b1JRWR8QYtBXHGVDPNU-1ooaiDIDsnTP5T5NGniE8sM
+
+{
+  "like":true
+}
+
+###
+DELETE http://localhost:3003/playlists/abaf7743-f8ae-40a6-86bf-136f6a1ce992
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3OWVhMDRlLTA1YzktNDNkOS1hODU2LWJiOGQ2OWU3YmFkZiIsIm5hbWUiOiJqdWp1anUzIiwicm9sZSI6Ik5PUk1BTCIsImlhdCI6MTY4NzQ3OTUzMiwiZXhwIjoxNjg4MDg0MzMyfQ.b1JRWR8QYtBXHGVDPNU-1ooaiDIDsnTP5T5NGniE8sM
+

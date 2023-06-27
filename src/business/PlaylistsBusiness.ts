@@ -142,8 +142,6 @@ export class PlaylistBusiness {
       }
     }
 
-
-
     await this.playlistDatabase.deletePlaylistById(idToDelete)
 
 

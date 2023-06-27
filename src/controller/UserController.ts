@@ -16,10 +16,13 @@ export class UserController {
         email: req.body.email,
         password: req.body.password,
       });
-
+      console.log("aqui");
+      
       const result = await this.userBusiness.signup(input);
-
+      
+      
       res.status(201).send(result);
+
     } catch (error) {
       console.log(error);
 

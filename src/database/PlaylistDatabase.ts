@@ -23,7 +23,7 @@ export class PlaylistDatabase extends BaseDatabase {
         `${PlaylistDatabase.TABLE_PLAYLISTS}.updated_at`,
         `${UserDatabase.TABLE_USERS}.name as creator_name`
       )
-      .join(`${UserDatabase.TABLE_USERS}`, `${PlaylistDatabase.TABLE_PLAYLISTS}.creator_id`, "=", `${UserDatabase.TABLE_USERS}.creator_id`)
+      .join(`${UserDatabase.TABLE_USERS}`, `${PlaylistDatabase.TABLE_PLAYLISTS}.creator_id`, "=", `${UserDatabase.TABLE_USERS}.id`)
     return result as PlaylistDBCreatorName[]
   }
 
@@ -59,10 +59,7 @@ export class PlaylistDatabase extends BaseDatabase {
         `${PlaylistDatabase.TABLE_PLAYLISTS}.updated_at`,
         `${UserDatabase.TABLE_USERS}.name as creator_name`
       )
-      .join(`${UserDatabase.TABLE_USERS}`,
-        `${PlaylistDatabase.TABLE_PLAYLISTS}.creator_id`,
-        "=",
-        `${UserDatabase.TABLE_USERS}.id`)
+      .join(`${UserDatabase.TABLE_USERS}`, `${PlaylistDatabase.TABLE_PLAYLISTS}.creator_id`, "=", `${UserDatabase.TABLE_USERS}.id`)
       .where({ [`${PlaylistDatabase.TABLE_PLAYLISTS}.id`]: id })
     return result as PlaylistDBCreatorName | undefined
   }
